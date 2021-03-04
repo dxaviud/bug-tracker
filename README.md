@@ -1,3 +1,3 @@
 # lexus-feedback
 
-Followed this [tutorial](https://youtu.be/w25ea_I89iM?list=PLSL1Ev2kgxs51N7GV4kcRzmKQGE6C68jG) and deployed to Heroku.
+A feedback app with PostgreSQL database that can send emails. Followed this [tutorial](https://youtu.be/w25ea_I89iM?list=PLSL1Ev2kgxs51N7GV4kcRzmKQGE6C68jG) and deployed to Heroku. I'll be tweaking it into something else soon.

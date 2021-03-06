@@ -14,25 +14,25 @@
       {% endif %}
       <form action="/submit" method="POST">
         <div class="form-group">
-          <h3>Name</h3>
+          <h3>Your name</h3>
           <input
             type="text"
             name="customer"
-            placeholder="Your name"
+            placeholder="Enter your name here"
           />
         </div>
         <div class="form-group">
-          <h3>Dealer</h3>
+          <h3>Bug type</h3>
           <select name="dealer">
-            <option value="">Select Dealer</option>
-            <option value="Tom Smith">Tom Smith</option>
-            <option value="Karen Swanson">Karen Swanson</option>
-            <option value="Jim Johnson">Jim Johnson</option>
-            <option value="Shauna Gifford">Shauna Gifford</option>
+            <option value="">Select Type</option>
+            <option value="Tom Smith">User Interface</option>
+            <option value="Karen Swanson">Client-side code</option>
+            <option value="Jim Johnson">Server-side code</option>
+            <option value="Shauna Gifford">Other</option>
           </select>
         </div>
         <div class="form-group">
-          <h3>Please rate your dealer</h3>
+          <h3>Bug priority (1 is highest)</h3>
           <input type="radio" name="rating" value="1" /> 1
           <input type="radio" name="rating" value="2" /> 2
           <input type="radio" name="rating" value="3" /> 3
@@ -45,13 +45,13 @@
           <input type="radio" name="rating" value="10" checked /> 10
         </div>
         <div class="form-group">
-          <h3>Comments about your experience</h3>
+          <h3>Bug summary</h3>
           <textarea
             name="comments"
             id=""
             cols="30"
             rows="10"
-            placeholder="Tell us what you liked and/or did not like"
+            placeholder="Enter a quick summary of the bug"
           ></textarea>
         </div>
         <input type="submit" value="Submit" class="btn" />

@@ -1,3 +1,3 @@
-# [lexus-feedback](https://rocky-basin-41481.herokuapp.com/)
+# [bug-tracker](https://rocky-basin-41481.herokuapp.com/)
 
-A feedback [app](https://rocky-basin-41481.herokuapp.com/) with PostgreSQL database that can send emails. Followed this [tutorial](https://youtu.be/w25ea_I89iM?list=PLSL1Ev2kgxs51N7GV4kcRzmKQGE6C68jG) and deployed to Heroku. I'll be tweaking it into something else soon.
+A bug tracker Flask [app](https://rocky-basin-41481.herokuapp.com/) with a PostgreSQL database that can send emails. I originally followed this [tutorial](https://youtu.be/w25ea_I89iM?list=PLSL1Ev2kgxs51N7GV4kcRzmKQGE6C68jG) by Traversy Media and deployed to Heroku. I'm tweaking it from a customer service feedback app to a bug tracker.

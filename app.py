@@ -4,7 +4,7 @@ from send_mail import send_mail
 
 app = Flask(__name__)
 
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
     app.debug = True
@@ -20,16 +20,16 @@ db = SQLAlchemy(app)
 class Feedback(db.Model):
     __tablename__ = 'feedback'
     id = db.Column(db.Integer, primary_key=True)
-    customer = db.Column(db.String(200), unique=True)
-    dealer = db.Column(db.String(200))
-    rating = db.Column(db.String(200))
-    comments = db.Column(db.Text())
+    developername = db.Column(db.String(200), unique=True)
+    bugtype = db.Column(db.String(200))
+    bugpriority = db.Column(db.String(200))
+    bugsummary = db.Column(db.Text())
 
-    def __init__(self, customer, dealer, rating, comments):
-        self.customer = customer
-        self.dealer = dealer
-        self.rating = rating
-        self.comments = comments
+    def __init__(self, developername, bugtype, bugpriority, bugsummary):
+        self.developername = developername
+        self.bugtype = bugtype
+        self.bugpriority = bugpriority
+        self.bugsummary = bugsummary
 
 
 @app.route('/')
@@ -40,17 +40,17 @@ def index():
 @app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':
-        customer = request.form['customer']
-        dealer = request.form['dealer']
-        rating = request.form['rating']
-        comments = request.form['comments']
-        if customer == '' or dealer == '':
+        developername = request.form['developername']
+        bugtype = request.form['bugtype']
+        bugpriority = request.form['bugpriority']
+        bugsummary = request.form['bugsummary']
+        if developername == '' or bugtype == '':
             return render_template('index.html', message='Please enter required fields.')
-        if db.session.query(Feedback).filter(Feedback.customer == customer).count() == 0:
-            data = Feedback(customer, dealer, rating, comments)
+        if db.session.query(Feedback).filter(Feedback.developername == developername).count() == 0:
+            data = Feedback(developername, bugtype, bugpriority, bugsummary)
             db.session.add(data)
             db.session.commit()
-            send_mail(customer, dealer, rating, comments)
+            send_mail(developername, bugtype, bugpriority, bugsummary)
             return render_template('success.html')
         return render_template('index.html', message='You have already submitted feedback.')
 

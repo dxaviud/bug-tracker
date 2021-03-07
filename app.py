@@ -20,7 +20,7 @@ db = SQLAlchemy(app)
 class Feedback(db.Model):
     __tablename__ = 'feedback'
     id = db.Column(db.Integer, primary_key=True)
-    developername = db.Column(db.String(200), unique=True)
+    developername = db.Column(db.String(200))
     bugtype = db.Column(db.String(200))
     bugpriority = db.Column(db.String(200))
     bugsummary = db.Column(db.Text())

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from send_mail import send_mail
+import yaml
 
 app = Flask(__name__)
 
@@ -11,7 +12,8 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:IShallOvercome@localhost/bugtracker'
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://qlodaemmvyawth:d7d8741f260da924ff32c455b6975b3e401e783fece05ffebc2ff1b3c86becf2@ec2-18-211-97-89.compute-1.amazonaws.com:5432/d1evkrmjak1kmi'
+    config = yaml.load(open("config.yaml"))
+    app.config['SQLALCHEMY_DATABASE_URI'] = config['SQLALCHEMY_DATABASE_URI']
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

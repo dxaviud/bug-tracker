@@ -1,0 +1,1 @@
+SQLALCHEMY_DATABASE_URI: "postgres://qlodaemmvyawth:d7d8741f260da924ff32c455b6975b3e401e783fece05ffebc2ff1b3c86becf2@ec2-18-211-97-89.compute-1.amazonaws.com:5432/d1evkrmjak1kmi"

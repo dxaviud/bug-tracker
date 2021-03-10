@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from send_mail import send_mail
-import yaml
+import os
 
 app = Flask(__name__)
 
@@ -12,8 +12,7 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:IShallOvercome@localhost/bugtracker'
 else:
     app.debug = False
-    config = yaml.load(open("config.yaml"))
-    app.config['SQLALCHEMY_DATABASE_URI'] = config['SQLALCHEMY_DATABASE_URI']
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL") #heroku config var
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

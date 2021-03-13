@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+{% block title %}Bugs{% endblock %}
+{% block body %}
+    <ul>
+        {% for bug in bugs %}
+ 
+            <li>Reporter: {{bug.name}}</li>
+            <li>Bug type: {{bug.type}}</li>
+            <li>Priority: {{bug.priority}}</li>
+            <li>Summary: {{bug.summary}}</li>
+            <br>
+            
+        {% endfor %}
+    </ul>
+{% endblock %}
+

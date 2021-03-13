@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from send_mail import send_mail
 import os
@@ -47,7 +47,7 @@ def submit():
         bugtype = request.form['bugtype']
         bugpriority = request.form['bugpriority']
         bugsummary = request.form['bugsummary']
-        if developername == '' or bugtype == '':
+        if developername == '' or bugtype == '' or bugsummary == '':
             return render_template('index.html', message='Please enter required fields.')
         if db.session.query(Bug).filter(Bug.name == developername).count() == 0:
             data = Bug(developername, bugtype, bugpriority, bugsummary)
@@ -56,6 +56,12 @@ def submit():
             send_mail(developername, bugtype, bugpriority, bugsummary)
             return render_template('success.html')
         return render_template('index.html', message='You have already submitted feedback.')
+
+@app.route('/bugs', methods=['GET'])
+def bugs():
+    if request.method == 'GET':
+        bugs = db.session.query(Bug)
+        return render_template('bugs.html', bugs=bugs)
 
 
 if __name__ == '__main__':

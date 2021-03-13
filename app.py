@@ -6,7 +6,7 @@ import yaml
 
 app = Flask(__name__)
 
-ENV = 'prod'
+ENV = 'prod' if os.getenv('DATABASE_URL') is not None else 'dev'
 
 if ENV == 'dev':
     app.debug = True

@@ -38,12 +38,6 @@ img {
 	margin-top: 2rem;
 }
 
-.logo {
-	width: 300px;
-	display: block;
-	margin: auto;
-}
-
 .form-group {
 	margin: 1rem 0;
 }
@@ -68,4 +62,10 @@ textarea {
 	cursor: pointer;
 	outline: none;
 	margin-top: 1rem;
+}
+
+.link {
+	font-size: 13.3333px;
+	text-decoration: none;
+	text-align: center;
 }

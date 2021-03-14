@@ -57,11 +57,22 @@ def submit():
             return render_template('success.html')
         return render_template('index.html', message='You have already submitted feedback.')
 
-@app.route('/bugs', methods=['GET'])
+@app.route('/bugs', methods=['GET', 'POST'])
 def bugs():
+    bugs = Bug.query.all()
     if request.method == 'GET':
-        bugs = db.session.query(Bug)
-        return render_template('bugs.html', bugs=bugs)
+        if len(bugs) == 0:
+            return render_template('bugs.html', bugs=bugs, message='No bugs. Yay!')
+        else:
+            return render_template('bugs.html', bugs=bugs)
+    elif request.method == 'POST':
+        if len(bugs) == 0:
+            return render_template('bugs.html', message='There are no bugs left to delete!')
+        else:
+            for bug in bugs:
+                db.session.delete(bug)
+            db.session.commit()
+            return render_template('bugs.html', message='No bugs. Yay!')
 
 
 if __name__ == '__main__':

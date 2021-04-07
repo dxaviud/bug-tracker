@@ -6,4 +6,4 @@ Todo:
 - Account creation  
 - User authentication  
 - Allow creation of projects  
-- UI  
+- Improve UI  
